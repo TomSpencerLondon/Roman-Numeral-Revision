@@ -6,14 +6,10 @@ public class RomanNumeralConverter {
     int remaining = number;
 
     for (ArabicToRoman arabic : ArabicToRoman.values()){
-      if (remaining >= arabic.decimal){
+      while (remaining >= arabic.decimal){
         stringBuilder.append(arabic.roman);
         remaining -= arabic.decimal;
       }
-    }
-
-    for (int i = 0; i < remaining; i++) {
-      stringBuilder.append("I");
     }
 
     return stringBuilder.toString();
@@ -23,7 +19,8 @@ public class RomanNumeralConverter {
     TEN(10, "X"),
     NINE(9, "IX"),
     FIVE(5, "V"),
-    FOUR(4, "IV");
+    FOUR(4, "IV"),
+    ONE(1, "I");
 
     public final int decimal;
     public final String roman;
