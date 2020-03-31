@@ -1,18 +1,31 @@
 package com.codurance.roman_numeral_converter;
 
 public class RomanNumeralConverter {
-  public String call(int number) {
-    StringBuilder stringBuilder = new StringBuilder();
-    int remaining = number;
+  private final StringBuilder stringBuilder;
 
-    for (ArabicToRoman arabic : ArabicToRoman.values()){
-      while (remaining >= arabic.decimal){
-        stringBuilder.append(arabic.roman);
-        remaining -= arabic.decimal;
-      }
+  public RomanNumeralConverter() {
+    this.stringBuilder = new StringBuilder();
+  }
+
+  public String call(int number) {
+    if (number <= 0){
+      return stringBuilder.toString();
     }
 
-    return stringBuilder.toString();
+    ArabicToRoman highestValue = findHighestValueFor(number);
+
+    stringBuilder.append(highestValue.roman);
+    number -= highestValue.decimal;
+    return call(number);
+  }
+
+  private ArabicToRoman findHighestValueFor(int number) {
+    for (ArabicToRoman arabic : ArabicToRoman.values()){
+      if (arabic.decimal <= number){
+        return arabic;
+      }
+    }
+    return null;
   }
 
   public enum ArabicToRoman{
