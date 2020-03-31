@@ -8,6 +8,10 @@ public class RomanNumeralConverter {
       stringBuilder.append("X");
       remaining -= 10;
     }
+    if (remaining == 9){
+      stringBuilder.append("IX");
+      remaining -= 9;
+    }
     if (remaining >= 5){
       stringBuilder.append("V");
       remaining -= 5;

@@ -28,12 +28,16 @@ public class RomanNumeralConverterShould {
           "5, V",
           "6, VI",
           "7, VII",
+          "8, VIII",
+          "9, IX",
           "11, XI",
           "12, XII",
           "13, XIII",
           "15, XV",
           "16, XVI",
-          "17, XVII"
+          "17, XVII",
+          "18, XVIII",
+          "19, XIX"
   })
   void convert_integer_to_roman_numeral_string(int number, String conversion) {
     RomanNumeralConverter romanNumeralConverter = new RomanNumeralConverter();
