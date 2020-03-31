@@ -24,13 +24,15 @@ public class RomanNumeralConverterShould {
           "1, I",
           "2, II",
           "3, III",
-          "4, IV",
           "5, V",
           "6, VI",
           "7, VII",
           "11, XI",
           "12, XII",
-          "13, XIII"
+          "13, XIII",
+          "15, XV",
+          "16, XVI",
+          "17, XVII"
   })
   void convert_integer_to_roman_numeral_string(int number, String conversion) {
     RomanNumeralConverter romanNumeralConverter = new RomanNumeralConverter();

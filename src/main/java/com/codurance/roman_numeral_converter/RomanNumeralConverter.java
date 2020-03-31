@@ -12,10 +12,7 @@ public class RomanNumeralConverter {
       if (number >= 5){
         stringBuilder.append("V");
         number -= 5;
-      }
-
-
-      else{
+      }else{
         stringBuilder.append("I");
         number--;
       }
