@@ -4,21 +4,12 @@ public class RomanNumeralConverter {
   public String call(int number) {
     StringBuilder stringBuilder = new StringBuilder();
     int remaining = number;
-    if (remaining >= 10){
-      stringBuilder.append("X");
-      remaining -= 10;
-    }
-    if (remaining == 9){
-      stringBuilder.append("IX");
-      remaining -= 9;
-    }
-    if (remaining >= 5){
-      stringBuilder.append("V");
-      remaining -= 5;
-    }
-    if (remaining == 4) {
-      stringBuilder.append("IV");
-      remaining -= 4;
+
+    for (ArabicToRoman arabic : ArabicToRoman.values()){
+      if (remaining >= arabic.decimal){
+        stringBuilder.append(arabic.roman);
+        remaining -= arabic.decimal;
+      }
     }
 
     for (int i = 0; i < remaining; i++) {
@@ -27,5 +18,21 @@ public class RomanNumeralConverter {
 
     return stringBuilder.toString();
   }
+
+  public enum ArabicToRoman{
+    TEN(10, "X"),
+    NINE(9, "IX"),
+    FIVE(5, "V"),
+    FOUR(4, "IV");
+
+    public final int decimal;
+    public final String roman;
+
+    ArabicToRoman(int decimal, String roman) {
+      this.decimal = decimal;
+      this.roman = roman;
+    }
+  }
+
 }
 
